@@ -14,28 +14,28 @@ const int resolution = 8;  // 分辨率
 void initPWM() {
   pinMode(2, OUTPUT);
   ledcAttach(PWM1, freq, resolution);
-  ledcWrite(PWM1, calcPWM(80));
+  ledcWrite(PWM1, calcPWM(90));
   delay(100);
   ledcAttach(PWM2, freq, resolution);
   ledcWrite(PWM2, calcPWM(90));
   delay(100);
-  ledcAttach(PWM3, freq, resolution);
-  ledcWrite(PWM3, calcPWM(0));
-  delay(100);
   ledcAttach(PWM4, freq, resolution);
-  ledcWrite(PWM4, calcPWM(0));
+  ledcWrite(PWM4, calcPWM(90));
   delay(100);
   ledcAttach(PWM5, freq, resolution);
-  ledcWrite(PWM5, calcPWM(0));
-  delay(100);
-  ledcAttach(PWM6, freq, resolution);
-  ledcWrite(PWM6, calcPWM(0));
+  ledcWrite(PWM5, calcPWM(90));
   delay(100);
   ledcAttach(PWM7, freq, resolution);
-  ledcWrite(PWM7, calcPWM(0));
+  ledcWrite(PWM7, calcPWM(90));
   delay(100);
   ledcAttach(PWM8, freq, resolution);
-  ledcWrite(PWM8, calcPWM(0));
+  ledcWrite(PWM8, calcPWM(90));
+  delay(100);
+  ledcAttach(PWM10, freq, resolution);
+  ledcWrite(PWM10, calcPWM(90));
+  delay(100);
+  ledcAttach(PWM11, freq, resolution);
+  ledcWrite(PWM11, calcPWM(90));
   delay(500);
 }
 
@@ -47,9 +47,9 @@ void loopPWM() {
 }
 
 void action1() {
-  ledcWrite(PWM1, calcPWM(80));
+  ledcWrite(PWM1, calcPWM(90));
   delay(1000);
-  ledcWrite(PWM1, calcPWM(80));
+  ledcWrite(PWM1, calcPWM(90));
   delay(1000);
 }
 
