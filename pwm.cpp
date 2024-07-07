@@ -1,3 +1,8 @@
+/**
+ * describe:    动作操作
+ * author:      创想酷玩
+ * data:        2024-07-01
+ */
 #include "pwm.h"
 #include <Arduino.h>
 #include "base.h"
@@ -8,38 +13,45 @@ const int resolution = 8;  // 分辨率
 
 void initPWM() {
   pinMode(2, OUTPUT);
-  ledcAttach(LED1, freq, resolution);
-  ledcWrite(LED1, calculatePWM(80));
+  ledcAttach(PWM1, freq, resolution);
+  ledcWrite(PWM1, calcPWM(80));
   delay(100);
-  ledcAttach(LED2, freq, resolution);
-  ledcWrite(LED2, calculatePWM(90));
+  ledcAttach(PWM2, freq, resolution);
+  ledcWrite(PWM2, calcPWM(90));
   delay(100);
-  ledcAttach(LED3, freq, resolution);
-  ledcWrite(LED3, calculatePWM(0));
+  ledcAttach(PWM3, freq, resolution);
+  ledcWrite(PWM3, calcPWM(0));
   delay(100);
-  ledcAttach(LED4, freq, resolution);
-  ledcWrite(LED4, calculatePWM(0));
+  ledcAttach(PWM4, freq, resolution);
+  ledcWrite(PWM4, calcPWM(0));
   delay(100);
-  ledcAttach(LED5, freq, resolution);
-  ledcWrite(LED5, calculatePWM(0));
+  ledcAttach(PWM5, freq, resolution);
+  ledcWrite(PWM5, calcPWM(0));
   delay(100);
-  ledcAttach(LED6, freq, resolution);
-  ledcWrite(LED6, calculatePWM(0));
+  ledcAttach(PWM6, freq, resolution);
+  ledcWrite(PWM6, calcPWM(0));
   delay(100);
-  ledcAttach(LED7, freq, resolution);
-  ledcWrite(LED7, calculatePWM(0));
+  ledcAttach(PWM7, freq, resolution);
+  ledcWrite(PWM7, calcPWM(0));
   delay(100);
-  ledcAttach(LED8, freq, resolution);
-  ledcWrite(LED8, calculatePWM(0));
+  ledcAttach(PWM8, freq, resolution);
+  ledcWrite(PWM8, calcPWM(0));
   delay(500);
 }
 
 void loopPWM() {
   digitalWrite(2, HIGH);
-  ledcWrite(LED1, calculatePWM(80));
-  delay(1000);
-  ledcWrite(LED1, calculatePWM(80));
-  delay(1000);
+  action1();
   digitalWrite(2, LOW);
   delay(100);
+}
+
+void action1() {
+  ledcWrite(PWM1, calcPWM(80));
+  delay(1000);
+  ledcWrite(PWM1, calcPWM(80));
+  delay(1000);
+}
+
+void action2() {
 }

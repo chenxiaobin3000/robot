@@ -1,10 +1,14 @@
+/**
+ * describe:    蓝牙控制
+ * author:      创想酷玩
+ * data:        2024-07-01
+ */
 #include "ble.h"
 #include <Arduino.h>
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLEUtils.h>
-#include "base.h"
-#include "calc.h"
+#include "pwm.h"
 
 BLEServer *pServer = NULL;        // BLEServer指针 pServer
 bool deviceConnected = false;     // 本次连接状态
@@ -29,10 +33,10 @@ class MyCallbacks : public BLECharacteristicCallbacks {
     if (rxValue.length() > 0) {  //向串口输出收到的值
       for (int i = 0; i < rxValue.length(); i++) {
         if (rxValue[i] == 'a') {
-          ledcWrite(LED1, calculatePWM(30));
+          action1();
           delay(500);
         } else if (rxValue[i] == 'b') {
-          ledcWrite(LED1, calculatePWM(0));
+          action2();
           delay(500);
         }
       }
