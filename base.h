@@ -19,4 +19,16 @@
 #define PWM11 25
 #define PWM12 26
 
+#define RDU PWM1 // 右下上
+#define RDD PWM2 // 右下下
+
+#define RUU PWM4 // 右上上
+#define RUD PWM5 // 右上下
+
+#define LDU PWM7 // 左下上
+#define LDD PWM8 // 左下下
+
+#define LUU PWM10 // 左上上
+#define LUD PWM11 // 左上下
+
 #endif  //_BASE_H_

@@ -8,13 +8,15 @@
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLEUtils.h>
-#include "pwm.h"
+#include "robot.h"
 
 BLEServer *pServer = NULL;        // BLEServer指针 pServer
 bool deviceConnected = false;     // 本次连接状态
 bool oldDeviceConnected = false;  // 上次连接状态
 #define SERVICE_UUID "ce2fae2d-1936-4167-a325-dcba95f5cca7"
 #define CHARACTERISTIC_UUID "98c95def-0031-44ae-bce8-44d30c9711c1"
+
+CRobot *robot = NULL;
 
 class MyServerCallbacks : public BLEServerCallbacks {
   void onConnect(BLEServer *pServer) {
@@ -33,11 +35,9 @@ class MyCallbacks : public BLECharacteristicCallbacks {
     if (rxValue.length() > 0) {  //向串口输出收到的值
       for (int i = 0; i < rxValue.length(); i++) {
         if (rxValue[i] == 'a') {
-          action1();
-          delay(500);
+          robot->straight();
         } else if (rxValue[i] == 'b') {
-          action2();
-          delay(500);
+          robot->straight();
         }
       }
       Serial.println();
@@ -60,6 +60,9 @@ void initBLE() {
 
   pService->start();                   // 开始服务
   pServer->getAdvertising()->start();  // 开始广播
+
+  robot = new CRobot();
+  robot->reset();
 }
 
 void loopBLE() {
@@ -79,4 +82,10 @@ void loopBLE() {
     // do stuff here on connecting
     oldDeviceConnected = deviceConnected;
   }
+
+  //
+  digitalWrite(2, HIGH);
+  robot->straight();
+  digitalWrite(2, LOW);
+  delay(100);
 }
